@@ -1,0 +1,5 @@
+torch=1.3.0
+tensorflow==1.15
+tqdm
+scikit-learn
+matplotlib
