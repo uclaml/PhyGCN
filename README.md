@@ -25,6 +25,7 @@ pip install -r requirements.txt
 The package should take less than 5 min to install.
 
 # Usage Demo
+Data is provided in [HNHN_data](HNHN_data) and pre-trained model checkpoints are provided in [checkpoints](checkpoints).
 ## Pre-training with Hyperedge Prediction
 Example:
 ```
@@ -43,3 +44,6 @@ chmod +x script.sh
 ./script.sh
 ```
 The test accuracy on the 10 splits will be collected in result.txt
+
+# Acknowledgement
+This repo is built upon [Hyper-SAGNN](https://github.com/ma-compbio/Hyper-SAGNN). 
