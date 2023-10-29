@@ -91,7 +91,7 @@ def parse_args():
     args.epoch = 25
     
     args.save_path = os.path.join(
-        '../checkpoints/', args.data)
+        'checkpoints/', args.data)
     if not os.path.exists(args.save_path):
         os.makedirs(args.save_path)
     return args
@@ -465,10 +465,10 @@ def save_embeddings(model, origin=False):
         for i in range(len(num_list)):
             start = 0 if i == 0 else num_list[i - 1]
             static = embeddings[int(start):int(num_list[i])]
-            np.save("../mymodel_%d.npy" % (i), static)
+            np.save("mymodel_%d.npy" % (i), static)
             
             if origin:
-                np.save("../mymodel_%d_origin.npy" % (i), static)
+                np.save("mymodel_%d_origin.npy" % (i), static)
     
     torch.cuda.empty_cache()
     return embeddings
@@ -625,20 +625,20 @@ hid_dim = args.dimensions
 drop_out = args.dropout
 
 if args.data_split == 'less':
-    train_zip = np.load("../data/%s/train_data_25.npz" % (args.data), allow_pickle=True)
-    test_zip = np.load("../data/%s/test_data_25.npz" % (args.data), allow_pickle=True)
+    train_zip = np.load("data/%s/train_data_25.npz" % (args.data), allow_pickle=True)
+    test_zip = np.load("data/%s/test_data_25.npz" % (args.data), allow_pickle=True)
 elif args.data_split == 'more':
-    train_zip = np.load("../data/%s/train_data_15.npz" % (args.data), allow_pickle=True)
-    test_zip = np.load("../data/%s/test_data_15.npz" % (args.data), allow_pickle=True)
+    train_zip = np.load("data/%s/train_data_15.npz" % (args.data), allow_pickle=True)
+    test_zip = np.load("data/%s/test_data_15.npz" % (args.data), allow_pickle=True)
 elif args.data_split == 'norm':
-    train_zip = np.load("../data/%s/train_data_20.npz" % (args.data), allow_pickle=True)
-    test_zip = np.load("../data/%s/test_data_20.npz" % (args.data), allow_pickle=True)
+    train_zip = np.load("data/%s/train_data_20.npz" % (args.data), allow_pickle=True)
+    test_zip = np.load("data/%s/test_data_20.npz" % (args.data), allow_pickle=True)
 elif args.data_split == 'half':
-    train_zip = np.load("../data/%s/train_data_50.npz" % (args.data), allow_pickle=True)
-    test_zip = np.load("../data/%s/test_data_50.npz" % (args.data), allow_pickle=True)
+    train_zip = np.load("data/%s/train_data_50.npz" % (args.data), allow_pickle=True)
+    test_zip = np.load("data/%s/test_data_50.npz" % (args.data), allow_pickle=True)
 else:
-    train_zip = np.load("../HNHN_data/%s/train_data.npz" % (args.data), allow_pickle=True)
-    test_zip = np.load("../HNHN_data/%s/test_data.npz" % (args.data), allow_pickle=True)
+    train_zip = np.load("HNHN_data/%s/train_data.npz" % (args.data), allow_pickle=True)
+    test_zip = np.load("HNHN_data/%s/test_data.npz" % (args.data), allow_pickle=True)
 train_data, test_data = train_zip['train_data'], test_zip['test_data']
 
 hypergraph = train_data
@@ -651,7 +651,7 @@ except BaseException:
 
 new_data = ['dblp', 'cora', 'cora-cite', 'citeseer', 'pubmed']
 if args.data in new_data:
-    with open("../HNHN_data/%s/features.pickle" % (args.data), 'rb') as file:
+    with open("HNHN_data/%s/features.pickle" % (args.data), 'rb') as file:
         features = pickle.load(file)
 
 num = train_zip['nums_type']

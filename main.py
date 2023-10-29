@@ -80,7 +80,7 @@ def parse_args():
     args.epoch = 25
 
     args.save_path = os.path.join(
-        '../checkpoints/', args.data)
+        'checkpoints/', args.data)
     if not os.path.exists(args.save_path):
         os.makedirs(args.save_path)
     return args
@@ -319,13 +319,13 @@ drop_out = args.dropout
 
 new_data = ['dblp', 'cora', 'cora-cite', 'citeseer', 'pubmed']
 if args.data in new_data:
-    with open("../HNHN_data/%s/features.pickle" % (args.data), 'rb') as file:
+    with open("HNHN_data/%s/features.pickle" % (args.data), 'rb') as file:
         features = pickle.load(file)
-    with open("../HNHN_data/%s/labels.pickle" % (args.data), 'rb') as file:
+    with open("HNHN_data/%s/labels.pickle" % (args.data), 'rb') as file:
         labels = pickle.load(file)
-    with open("../HNHN_data/%s/splits/splits_02/%s.pickle" % (args.data, str(args.split)), 'rb') as file:
+    with open("HNHN_data/%s/splits/splits_02/%s.pickle" % (args.data, str(args.split)), 'rb') as file:
         split = pickle.load(file)
-    with open("../HNHN_data/%s/hypergraph.pickle" % (args.data), 'rb') as file:
+    with open("HNHN_data/%s/hypergraph.pickle" % (args.data), 'rb') as file:
         hypergraph = pickle.load(file)
 
     labels = np.array(labels)

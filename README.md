@@ -42,3 +42,4 @@ To get the results on 10 random train-test splits, use
 chmod +x script.sh
 ./script.sh
 ```
+The test accuracy on the 10 splits will be collected in result.txt
