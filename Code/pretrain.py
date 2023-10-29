@@ -25,7 +25,7 @@ import pickle
 np.random.seed(0)
 cpu_num = multiprocessing.cpu_count()
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 torch.backends.cudnn.benchmark = True
 torch.backends.cudnn.deterministic = False
 device_ids = [0, 1]
@@ -432,7 +432,7 @@ def generate_negative(x, dict1, get_type='all', weight="", forward=True):
     if not forward:
         device = 'cpu'
     else:
-        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     
     new_weight = torch.tensor(weight[new_index]).to(device)
     

@@ -1,0 +1,10 @@
+python main.py --f conv --data  cora-cite --num-epoch 300 --layers 1 --split 1  
+python main.py --f conv --data  cora-cite --num-epoch 300 --layers 1 --split 2  
+python main.py --f conv --data  cora-cite --num-epoch 300 --layers 1 --split 3  
+python main.py --f conv --data  cora-cite --num-epoch 300 --layers 1 --split 4  
+python main.py --f conv --data  cora-cite --num-epoch 300 --layers 1 --split 5  
+python main.py --f conv --data  cora-cite --num-epoch 300 --layers 1 --split 6  
+python main.py --f conv --data  cora-cite --num-epoch 300 --layers 1 --split 7  
+python main.py --f conv --data  cora-cite --num-epoch 300 --layers 1 --split 8  
+python main.py --f conv --data  cora-cite --num-epoch 300 --layers 1 --split 9  
+python main.py --f conv --data  cora-cite --num-epoch 300 --layers 1 --split 10  

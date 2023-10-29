@@ -5,7 +5,7 @@ import numpy as np
 import math
 from torch.nn.parameter import Parameter
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 device_ids = [0, 1]
 
 
