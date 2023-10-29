@@ -30,6 +30,7 @@ Example:
 ```
 python pretrain.py --data pubmed --f conv --num-epoch 300 --dropedge 0.7 --layers 2
 ```
+Note that our pre-trained checkpoints are provided and can be directly used for note classification.
 
 ## Node Classification
 Example: 
