@@ -43,7 +43,7 @@ To get the results on 10 random train-test splits, use
 chmod +x script.sh
 ./script.sh
 ```
-The test accuracy on the 10 splits will be collected in result.txt
+Use `CUDA_VISIBLE_DEVICES=0` if multiple GPUs are available. The test accuracy on the 10 splits will be collected in result.txt
 
 # Acknowledgement
 This repo is built upon [Hyper-SAGNN](https://github.com/ma-compbio/Hyper-SAGNN). 
