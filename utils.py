@@ -12,6 +12,15 @@ import torch.nn as nn, torch.nn.functional as F, torch.nn.init as init
 from torch.autograd import Variable
 from torch.nn.modules.module import Module
 from torch.nn.parameter import Parameter
+from itertools import combinations
+
+
+def convert_hyperedges_to_edges(hyperedges):
+    graph_edges = set()
+    for hyperedge in hyperedges:
+        for pair in combinations(hyperedge, 2):
+            graph_edges.add(pair)
+    return [list(pair) for pair in graph_edges] #list(graph_edges)
 
 
 def normalise(M):
@@ -191,7 +200,7 @@ def update(Se, Ie, mediator, weights, c):
 
 
 
-def adjacency(edges, weights, n):
+def adjacency(edges, n):
     """
     computes an sparse adjacency matrix
     arguments:
@@ -201,22 +210,23 @@ def adjacency(edges, weights, n):
     returns: a scipy.sparse adjacency matrix with unit weight self loops for edges with the given weights
     """
     
-    dictionary = {tuple(item): index for index, item in enumerate(edges)}
-    edges = [list(itm) for itm in dictionary.keys()]   
+    # dictionary = {tuple(item): index for index, item in enumerate(edges)}
+    # edges = [list(itm) for itm in dictionary.keys()]   
     organised = []
 
     for e in edges:
         i,j = e[0],e[1]
-        w = weights[(i,j)]
-        organised.append(w)
+        # w = weights[(i,j)]
+        organised.append(1)#(w)
 
     edges, weights = np.array(edges), np.array(organised)
+    edges -= 1
     adj = sp.coo_matrix((weights, (edges[:, 0], edges[:, 1])), shape=(n, n), dtype=np.float32)
     adj = adj + sp.eye(n)
-
-    A = symnormalise(sp.csr_matrix(adj, dtype=np.float32))
-    A = ssm2tst(A)
-    return A
+    # print(adj.shape)
+    # A = symnormalise(sp.csr_matrix(adj, dtype=np.float32))
+    # A = ssm2tst(A)
+    return adj
 
 
 

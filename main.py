@@ -232,7 +232,7 @@ def train(args, model, loss, training_data, validation_data, optimizer, epochs, 
     print("Max Accuracy: ", max(valid_accus))
 
     valid_bce_loss, valid_accu = eval_epoch(args, model, loss, validation_data, verbose=True)
-    print(str(valid_accu)+',', file=open("result.txt", "a"))
+    print(str(valid_accu)+',', file=open(f"result_gcn_{args.data}.txt", "a"))
 
 
 def generate_H(edge, nums_type, weight):
@@ -323,7 +323,7 @@ if args.data in new_data:
         features = pickle.load(file)
     with open("HNHN_data/%s/labels.pickle" % (args.data), 'rb') as file:
         labels = pickle.load(file)
-    with open("HNHN_data/%s/splits/splits_02/%s.pickle" % (args.data, str(args.split)), 'rb') as file:
+    with open("HNHN_data/%s/splits/splits_16/%s.pickle" % (args.data, str(args.split)), 'rb') as file:
         split = pickle.load(file)
     with open("HNHN_data/%s/hypergraph.pickle" % (args.data), 'rb') as file:
         hypergraph = pickle.load(file)
@@ -367,6 +367,10 @@ with tf.Graph().as_default(), tf.Session() as session:
         features = features.tocoo()
         embeddings = torch.sparse.FloatTensor(torch.LongTensor([features.row.tolist(), features.col.tolist()]),
                                                   torch.FloatTensor(features.data), torch.Size((num[0], features.shape[-1]))).to(device)
+
+        edges = convert_hyperedges_to_edges(edges)
+        # G = adjacency(edges, num[0])
+        # print(G.shape)
 
         H = generate_H_intact(edges, num)
         torch.save(H,'H.pt')

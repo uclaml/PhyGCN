@@ -18,8 +18,9 @@ This package is developed and tested on *Linux*.
 
 # Installation
 ```
-conda create -n myenv python=3.6.8
+conda create -n myenv python=3.7.0
 conda activate myenv
+pip install --upgrade pip 
 pip install -r requirements.txt
 ```
 The package should take less than 5 min to install.

@@ -1,5 +1,7 @@
-torch=1.6.0
+torch==1.6.0
 tensorflow==1.15
 tqdm
 scikit-learn
 matplotlib
+gensim==3.8.3
+protobuf==3.20.*
